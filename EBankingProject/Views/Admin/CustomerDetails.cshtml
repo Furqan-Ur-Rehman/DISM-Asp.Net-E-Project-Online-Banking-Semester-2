@@ -1,0 +1,179 @@
+﻿@model EBankingProject.Models.Customer
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div>
+    <h4 class="mt-4">Customer Details </h4>
+    <hr />
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-bordered table-striped table-hover  table-responsive">
+
+                    <tr>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.firstName)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.lastName)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.Gender)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.DateofBirth)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.CnicNo)
+                        </th>
+                    </tr>
+
+                    <tr>
+
+                        <td>
+                            @Html.DisplayFor(model => model.firstName)
+                        </td>
+
+
+
+                        <td>
+                            @Html.DisplayFor(model => model.lastName)
+                        </td>
+
+
+
+                        <td>
+                            @Html.DisplayFor(model => model.Gender)
+                        </td>
+
+
+
+                        <td>
+                            @Html.DisplayFor(model => model.DateofBirth)
+                        </td>
+
+
+
+                        <td>
+                            @Html.DisplayFor(model => model.CnicNo)
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-bordered table-striped table-hover  table-responsive">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Address)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.EmailId)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.PinCode)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.Image)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.Password)
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(model => model.Address)
+                        </td>
+
+
+
+                        <td>
+                            @Html.DisplayFor(model => model.EmailId)
+                        </td>
+
+
+
+                        <td>
+                            @Html.DisplayFor(model => model.PinCode)
+                        </td>
+
+
+
+                        <td>
+                            @*@Html.DisplayFor(model => model.Image)*@
+                            <img src="~/img/@Model.Image" name="uploadImg" class="img-responsive" id="ProdImage" width="70" height="70" />
+                        </td>
+
+
+
+                        <td>
+                            @Html.DisplayFor(model => model.Password)
+                        </td>
+
+                    </tr>
+
+
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-bordered table-striped table-hover  table-responsive">
+                    <tr>
+                       
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.branch1.branchName)
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(model => model.branch1.branchName)
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+        @*<div class="row">
+                <div class="col-md-12">
+                    <table class="table table-bordered table-striped table-hover table-info table-responsive">
+
+                    </table>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-bordered table-striped table-hover table-info table-responsive">
+
+
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-bordered table-striped table-hover table-info table-responsive">
+
+
+                    </table>
+                </div>
+            </div>*@
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Edit", "CustomerEdit", new { id = Model.CustId }) |
+    @Html.ActionLink("Back to List", "ListCustomer", "Admin")
+</p>

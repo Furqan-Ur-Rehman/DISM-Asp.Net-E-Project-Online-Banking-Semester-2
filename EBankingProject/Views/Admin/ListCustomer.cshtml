@@ -1,0 +1,110 @@
+﻿@model IEnumerable<EBankingProject.Models.Customer>
+
+@{
+    ViewBag.Title = "ListCustomer";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h4 class="mt-4">Customer List</h4>
+<hr />
+
+<p>
+    @Html.ActionLink("Create New", "AddCustomer", "Admin")
+</p>
+
+@if (TempData["EditMessage"] != null)
+{
+    <h6 class="alert-primary p-2">@TempData["EditMessage"]</h6>
+}
+
+@if (TempData["DeleteMessage"] != null)
+{
+    <h6 class="alert-primary p-2">@TempData["DeleteMessage"]</h6>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.firstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lastName)
+        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateofBirth)
+            </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.CnicNo)
+        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>*@
+        @*<th>
+                @Html.DisplayNameFor(model => model.EmailId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pin)
+            </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Image)
+        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.Password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.branch1.branchName)
+            </th>*@
+        <th>CRUD</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.firstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.lastName)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Gender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateofBirth)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.CnicNo)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmailId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pin)
+                </td>*@
+            <td>
+                @*@Html.DisplayFor(modelItem => item.Image)*@
+                <img src="../img/@item.Image" alt="Image" class="text-center" style="border-radius:5px;" height="70" width="70" />
+
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Password)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.branch1.branchName)
+                </td>*@
+        <td>
+            @Html.ActionLink("Create Account", "Account", new { id = item.CustId })|
+            @Html.ActionLink("Edit", "CustomerEdit", new { id = item.CustId }) |
+            @Html.ActionLink("Details", "CustomerDetails", new { id = item.CustId })   |
+            @Html.ActionLink("Delete", "CustomerDelete", new { id = item.CustId })  |
+        </td>
+        </tr>
+    }
+
+</table>

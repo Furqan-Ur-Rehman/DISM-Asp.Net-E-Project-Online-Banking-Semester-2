@@ -1,0 +1,288 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EbankingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Account">
+    <Key>
+      <PropertyRef Name="AccountNO" />
+    </Key>
+    <Property Name="AccountNO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Balance" Type="Decimal" Precision="8" Scale="3" />
+    <Property Name="AccountDate" Type="DateTime" Precision="0" />
+    <Property Name="AccountType" Type="Int32" />
+    <Property Name="CustomerId" Type="Int32" />
+    <NavigationProperty Name="AccountType1" Relationship="Self.FK__Account__Account__21B6055D" FromRole="Account" ToRole="AccountType" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK__Account__Custome__22AA2996" FromRole="Account" ToRole="Customer" />
+    <NavigationProperty Name="BalanceEnquiries" Relationship="Self.FK__BalanceEn__Accou__239E4DCF" FromRole="Account" ToRole="BalanceEnquiry" />
+    <NavigationProperty Name="ChangeofAddresses" Relationship="Self.FK__ChangeofA__Accou__24927208" FromRole="Account" ToRole="ChangeofAddress" />
+    <NavigationProperty Name="ChequeReqs" Relationship="Self.FK__ChequeReq__Accou__25869641" FromRole="Account" ToRole="ChequeReq" />
+    <NavigationProperty Name="RequestofChequeBooks" Relationship="Self.FK__Requestof__Accou__276EDEB3" FromRole="Account" ToRole="RequestofChequeBook" />
+    <NavigationProperty Name="StopPaymentofCheques" Relationship="Self.FK__StopPayme__Accou__286302EC" FromRole="Account" ToRole="StopPaymentofCheque" />
+    <NavigationProperty Name="Transactions" Relationship="Self.FK__Transacti__Recie__29572725" FromRole="Account" ToRole="Transactions" />
+    <NavigationProperty Name="Transactions1" Relationship="Self.FK__Transacti__Sende__2A4B4B5E" FromRole="Account" ToRole="Transactions" />
+  </EntityType>
+  <EntityType Name="AccountType">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TypeOfAccount" Type="String" MaxLength="225" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Accounts" Relationship="Self.FK__Account__Account__21B6055D" FromRole="AccountType" ToRole="Account" />
+  </EntityType>
+  <EntityType Name="BalanceEnquiry">
+    <Key>
+      <PropertyRef Name="BalId" />
+    </Key>
+    <Property Name="BalId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AccountNo" Type="Int32" />
+    <Property Name="CurrentBalance" Type="Decimal" Precision="8" Scale="3" />
+    <NavigationProperty Name="Account" Relationship="Self.FK__BalanceEn__Accou__239E4DCF" FromRole="BalanceEnquiry" ToRole="Account" />
+  </EntityType>
+  <EntityType Name="branch">
+    <Key>
+      <PropertyRef Name="branchId" />
+    </Key>
+    <Property Name="branchId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="branchName" Type="String" MaxLength="225" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Customers" Relationship="Self.FK__Customer__Branch__267ABA7A" FromRole="branch" ToRole="Customer" />
+  </EntityType>
+  <EntityType Name="ChangeofAddress">
+    <Key>
+      <PropertyRef Name="ChangeId" />
+    </Key>
+    <Property Name="ChangeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AccountNo" Type="Int32" />
+    <Property Name="OldAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="NewAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Account" Relationship="Self.FK__ChangeofA__Accou__24927208" FromRole="ChangeofAddress" ToRole="Account" />
+  </EntityType>
+  <EntityType Name="ChequeReq">
+    <Key>
+      <PropertyRef Name="ChecqueId" />
+    </Key>
+    <Property Name="ChecqueId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" MaxLength="225" FixedLength="false" Unicode="false" />
+    <Property Name="AccountNumber" Type="Int32" />
+    <NavigationProperty Name="Account" Relationship="Self.FK__ChequeReq__Accou__25869641" FromRole="ChequeReq" ToRole="Account" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="CustId" />
+    </Key>
+    <Property Name="CustId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="firstName" Type="String" MaxLength="225" FixedLength="false" Unicode="false" />
+    <Property Name="lastName" Type="String" MaxLength="225" FixedLength="false" Unicode="false" />
+    <Property Name="Gender" Type="String" MaxLength="225" FixedLength="false" Unicode="false" />
+    <Property Name="DateofBirth" Type="DateTime" Precision="0" />
+    <Property Name="CnicNo" Type="String" MaxLength="225" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="225" FixedLength="false" Unicode="false" />
+    <Property Name="EmailId" Type="String" MaxLength="225" FixedLength="false" Unicode="false" />
+    <Property Name="PinCode" Type="Int32" />
+    <Property Name="Password" Type="String" MaxLength="225" FixedLength="false" Unicode="false" />
+    <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Branch" Type="Int32" />
+    <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Accounts" Relationship="Self.FK__Account__Custome__22AA2996" FromRole="Customer" ToRole="Account" />
+    <NavigationProperty Name="branch1" Relationship="Self.FK__Customer__Branch__267ABA7A" FromRole="Customer" ToRole="branch" />
+  </EntityType>
+  <EntityType Name="RequestofChequeBook">
+    <Key>
+      <PropertyRef Name="ReqCheqid" />
+    </Key>
+    <Property Name="ReqCheqid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AccountNo" Type="Int32" />
+    <Property Name="LeavesofCheque" Type="Int32" />
+    <NavigationProperty Name="Account" Relationship="Self.FK__Requestof__Accou__276EDEB3" FromRole="RequestofChequeBook" ToRole="Account" />
+  </EntityType>
+  <EntityType Name="StopPaymentofCheque">
+    <Key>
+      <PropertyRef Name="StopPaymentId" />
+    </Key>
+    <Property Name="StopPaymentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AccountNo" Type="Int32" />
+    <Property Name="StopPayment" Type="String" MaxLength="225" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Account" Relationship="Self.FK__StopPayme__Accou__286302EC" FromRole="StopPaymentofCheque" ToRole="Account" />
+  </EntityType>
+  <EntityType Name="Transaction">
+    <Key>
+      <PropertyRef Name="TransId" />
+    </Key>
+    <Property Name="TransId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TransferAmount" Type="Decimal" Precision="8" Scale="3" />
+    <Property Name="TransferDate" Type="DateTime" Precision="0" />
+    <Property Name="SenderAccountNum" Type="Int32" />
+    <Property Name="RecieverAccountNum" Type="Int32" />
+    <NavigationProperty Name="Account" Relationship="Self.FK__Transacti__Recie__29572725" FromRole="Transactions" ToRole="Account" />
+    <NavigationProperty Name="Account1" Relationship="Self.FK__Transacti__Sende__2A4B4B5E" FromRole="Transactions" ToRole="Account" />
+  </EntityType>
+  <Association Name="FK__Account__Account__21B6055D">
+    <End Role="AccountType" Type="Self.AccountType" Multiplicity="0..1" />
+    <End Role="Account" Type="Self.Account" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AccountType">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Account">
+        <PropertyRef Name="AccountType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Account__Custome__22AA2996">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="Account" Type="Self.Account" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CustId" />
+      </Principal>
+      <Dependent Role="Account">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BalanceEn__Accou__239E4DCF">
+    <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+    <End Role="BalanceEnquiry" Type="Self.BalanceEnquiry" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="AccountNO" />
+      </Principal>
+      <Dependent Role="BalanceEnquiry">
+        <PropertyRef Name="AccountNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChangeofA__Accou__24927208">
+    <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+    <End Role="ChangeofAddress" Type="Self.ChangeofAddress" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="AccountNO" />
+      </Principal>
+      <Dependent Role="ChangeofAddress">
+        <PropertyRef Name="AccountNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChequeReq__Accou__25869641">
+    <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+    <End Role="ChequeReq" Type="Self.ChequeReq" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="AccountNO" />
+      </Principal>
+      <Dependent Role="ChequeReq">
+        <PropertyRef Name="AccountNumber" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Requestof__Accou__276EDEB3">
+    <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+    <End Role="RequestofChequeBook" Type="Self.RequestofChequeBook" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="AccountNO" />
+      </Principal>
+      <Dependent Role="RequestofChequeBook">
+        <PropertyRef Name="AccountNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StopPayme__Accou__286302EC">
+    <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+    <End Role="StopPaymentofCheque" Type="Self.StopPaymentofCheque" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="AccountNO" />
+      </Principal>
+      <Dependent Role="StopPaymentofCheque">
+        <PropertyRef Name="AccountNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transacti__Recie__29572725">
+    <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+    <End Role="Transactions" Type="Self.Transaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="AccountNO" />
+      </Principal>
+      <Dependent Role="Transactions">
+        <PropertyRef Name="RecieverAccountNum" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transacti__Sende__2A4B4B5E">
+    <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+    <End Role="Transactions" Type="Self.Transaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="AccountNO" />
+      </Principal>
+      <Dependent Role="Transactions">
+        <PropertyRef Name="SenderAccountNum" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Customer__Branch__267ABA7A">
+    <End Role="branch" Type="Self.branch" Multiplicity="0..1" />
+    <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="branch">
+        <PropertyRef Name="branchId" />
+      </Principal>
+      <Dependent Role="Customer">
+        <PropertyRef Name="Branch" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EbankingEntities12" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Accounts" EntityType="Self.Account" />
+    <EntitySet Name="AccountTypes" EntityType="Self.AccountType" />
+    <EntitySet Name="BalanceEnquiries" EntityType="Self.BalanceEnquiry" />
+    <EntitySet Name="branches" EntityType="Self.branch" />
+    <EntitySet Name="ChangeofAddresses" EntityType="Self.ChangeofAddress" />
+    <EntitySet Name="ChequeReqs" EntityType="Self.ChequeReq" />
+    <EntitySet Name="Customers" EntityType="Self.Customer" />
+    <EntitySet Name="RequestofChequeBooks" EntityType="Self.RequestofChequeBook" />
+    <EntitySet Name="StopPaymentofCheques" EntityType="Self.StopPaymentofCheque" />
+    <EntitySet Name="Transactions" EntityType="Self.Transaction" />
+    <AssociationSet Name="FK__Account__Account__21B6055D" Association="Self.FK__Account__Account__21B6055D">
+      <End Role="AccountType" EntitySet="AccountTypes" />
+      <End Role="Account" EntitySet="Accounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Account__Custome__22AA2996" Association="Self.FK__Account__Custome__22AA2996">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="Account" EntitySet="Accounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BalanceEn__Accou__239E4DCF" Association="Self.FK__BalanceEn__Accou__239E4DCF">
+      <End Role="Account" EntitySet="Accounts" />
+      <End Role="BalanceEnquiry" EntitySet="BalanceEnquiries" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChangeofA__Accou__24927208" Association="Self.FK__ChangeofA__Accou__24927208">
+      <End Role="Account" EntitySet="Accounts" />
+      <End Role="ChangeofAddress" EntitySet="ChangeofAddresses" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChequeReq__Accou__25869641" Association="Self.FK__ChequeReq__Accou__25869641">
+      <End Role="Account" EntitySet="Accounts" />
+      <End Role="ChequeReq" EntitySet="ChequeReqs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Requestof__Accou__276EDEB3" Association="Self.FK__Requestof__Accou__276EDEB3">
+      <End Role="Account" EntitySet="Accounts" />
+      <End Role="RequestofChequeBook" EntitySet="RequestofChequeBooks" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StopPayme__Accou__286302EC" Association="Self.FK__StopPayme__Accou__286302EC">
+      <End Role="Account" EntitySet="Accounts" />
+      <End Role="StopPaymentofCheque" EntitySet="StopPaymentofCheques" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transacti__Recie__29572725" Association="Self.FK__Transacti__Recie__29572725">
+      <End Role="Account" EntitySet="Accounts" />
+      <End Role="Transactions" EntitySet="Transactions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transacti__Sende__2A4B4B5E" Association="Self.FK__Transacti__Sende__2A4B4B5E">
+      <End Role="Account" EntitySet="Accounts" />
+      <End Role="Transactions" EntitySet="Transactions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Customer__Branch__267ABA7A" Association="Self.FK__Customer__Branch__267ABA7A">
+      <End Role="branch" EntitySet="branches" />
+      <End Role="Customer" EntitySet="Customers" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

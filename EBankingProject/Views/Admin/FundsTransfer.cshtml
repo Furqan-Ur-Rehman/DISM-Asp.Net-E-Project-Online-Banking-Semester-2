@@ -1,0 +1,55 @@
+﻿@model IEnumerable<EBankingProject.Models.Transaction>
+@{
+    ViewBag.Title = "FundsTransfer";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>FundsTransfer</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TransId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TransferDate)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.TransferAmount)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.SenderAccountNum)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.RecieverAccountNum)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TransId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TransferDate)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.TransferAmount)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.SenderAccountNum)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.RecieverAccountNum)
+            </td>
+        </tr>
+    }
+
+</table>

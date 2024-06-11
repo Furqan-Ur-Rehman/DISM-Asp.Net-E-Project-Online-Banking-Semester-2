@@ -1,0 +1,41 @@
+﻿@model EBankingProject.Models.Account
+@{
+    ViewBag.Title = "Calculate";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Calculate</h2>
+
+<div class="container">
+    @using (Html.BeginForm("Calculate", "Admin", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+    {
+        <h4 class="mt-4"><u>Add Calculation</u></h4>
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.AccountNO, htmlAttributes: new { @class = "control-label col-md-2 mt-3", @name = "id" })
+                    <div class="">
+                        @Html.EditorFor(model => model.AccountNO, new { htmlAttributes = new { @class = "form-control " } })
+                        @Html.ValidationMessageFor(model => model.AccountNO, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            @*<div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.AccountNO, htmlAttributes: new { @class = "control-label col-md-2 mt-3", @name = "id" })
+                    <div class="">
+                        @Html.EditorFor(model => model.AccountNO, new { htmlAttributes = new { @class = "form-control " } })
+                        @Html.ValidationMessageFor(model => model.AccountNO, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>*@
+        </div>
+
+        <div class="form-group mt-3">
+            <div class="col-lg-12 col-md-12">
+                <input type="submit" value="Create" class="btn btn-primary form-control" />
+            </div>
+        </div>
+    }
+
+</div>

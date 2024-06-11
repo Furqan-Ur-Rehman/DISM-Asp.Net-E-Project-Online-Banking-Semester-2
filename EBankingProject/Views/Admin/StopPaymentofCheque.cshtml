@@ -1,0 +1,45 @@
+﻿@model IEnumerable<EBankingProject.Models.StopPaymentofCheque>
+@{
+    ViewBag.Title = "StopPaymentofCheque";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h4 class="mt-3">Stop Payment of Cheque</h4>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StopPaymentId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AccountNo)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.StopPayment)
+        </th>
+
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StopPaymentId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AccountNo)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.StopPayment)
+            </td>
+
+
+
+
+        </tr>
+    }
+
+</table>

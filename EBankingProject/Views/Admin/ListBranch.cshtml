@@ -1,0 +1,37 @@
+﻿@model IEnumerable<EBankingProject.Models.branch>
+
+@{
+    ViewBag.Title = "ListBranch";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h4 class="mt-4">List of Branches</h4>
+<hr />
+<p>
+    @Html.ActionLink("Create New", "AddBranch", "Admin")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.branchName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.branchName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.branchId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.branchId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.branchId })
+            </td>
+        </tr>
+    }
+
+</table>
+
+

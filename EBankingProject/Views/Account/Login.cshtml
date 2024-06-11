@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model EBankingProject.Models.Customer
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+        <style>
+            #LoginForm {
+                background: #22242b;
+                padding: 63px 42px 73px;
+            }
+            .inputstyle {
+                width: 100%;
+                height: 49px;
+                padding: 5px 26px;
+                margin-bottom: 30px;
+                border: none;
+                font-size: 14px;
+                color: #838383;
+                font-style: italic;
+            }
+        </style>
+
+    </head>
+
+
+
+
+<section class="hero-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="hs-text">
+                    <h2>SECURE INTERNET BANKING</h2>
+                    <p>Donec eget efficitur ex. Donec eget dolor vitae eros feugiat tristique id vitae massa. Proin vulputate congue rutrum. Fusce lobortis a enim eget tempus. Class aptent taciti sociosqu ad litora torquent per conubia.</p>
+                    <a href="#" class="site-btn sb-dark">Find out more</a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+                {
+                    <div id="LoginForm">
+                        <div>
+                            @if (TempData["msg"] != null)
+                            {
+                                <p class="alert-danger font-weight-bold p-2">@TempData["msg"]</p>
+                            }
+                        </div>
+                        <form class="hero-form">
+                            @Html.EditorFor(model => model.EmailId, new { htmlAttributes = new { @class = "inputstyle", placeholder = "Enter your Email" } })
+                            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "inputstyle", placeholder = "Enter your Password" } })
+
+                            @*<input type="text" placeholder="Your Name">
+            <input type="text" placeholder="Your E-mail">
+            <input type="text" placeholder="Your Phone">*@
+                            <button class="site-btn">LOGIN</button>
+                        </form>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="hero-slider owl-carousel">
+        <div class="hs-item set-bg" data-setbg="../img/hero-slider/1.jpg"></div>
+        <div class="hs-item set-bg" data-setbg="../img/hero-slider/2.jpg"></div>
+        <div class="hs-item set-bg" data-setbg="../img/hero-slider/3.jpg"></div>
+    </div>
+</section>
+
+

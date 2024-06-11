@@ -1,0 +1,138 @@
+﻿@model EBankingProject.Models.Account
+@{
+    ViewBag.Title = "FundsTransfer";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<h3 class="mt-3">FundsTransfer</h3>
+
+
+@if (Session["FundsnotTransferred"] != null)
+{
+    <h6 class="alert-primary p-2">@Session["FundsnotTransferred"]</h6>
+}
+
+
+<div class="container-fluid my-5">
+
+
+    @using (Html.BeginForm("FundsTransfer", "User", FormMethod.Post))
+    {
+
+        if (Session["FundTransfer"] != null)
+        {
+            <h6 class="alert-primary p-2">@Session["FundTransfer"]</h6>
+        }
+
+        //Html.HiddenFor(model => model.AccountNO);
+        @*<input type="hidden" name="id" value="model.Account.AccountNO" />*@
+
+        @*<h4>Account No: <span style="margin-left:20px">@Model.AccountNO</span></h4>*@
+
+
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12 ">
+                <div class="form-group">
+                    <label class="control-label col-md-6 mt-3">Account Number:</label>
+                    <div class="">
+
+                        @*@Html.TextBoxFor(model => model.AccountNO, htmlAttributes: new { @class = "form-control"})*@
+                        <input type="text" name="Accountnumber" value="@Model.AccountNO" readonly class="form-control" />
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-12 ">
+                <div class="form-group">
+                    <label class="control-label col-md-6 mt-3">Name of Account Holder:</label>
+                    <div class="">
+
+                        <input type="text" name="" value="@Model.Customer.firstName" readonly class="form-control" />
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12 ">
+                <div class="form-group">
+                    <label class="control-label col-md-6 mt-3">Transfer Date:</label>
+                    <div class="">
+
+                        <input type="date" name="transfDate" value="" class="form-control" />
+
+                        @*@Html.TextBoxFor(model => model.TransferDate, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.TransferDate, "", new { @class = "text-danger" })*@
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-12 ">
+                <div class="form-group">
+                    <label class="control-label col-md-6 mt-3">Transfer Amount:</label>
+                    <div class="">
+                        <input type="text" name="transfAmount" value="" class="form-control" />
+                        @*@Html.TextBoxFor(model => model.TransferAmount, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.TransferAmount, "", new { @class = "text-danger" })*@
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12 ">
+                <div class="form-group">
+                    <label class="control-label col-md-6 mt-3">Sender Account No:</label>
+                    <div class="">
+                        <input type="text" name="SenderAmount" value="@Model.AccountNO" readonly class="form-control" />
+
+                        @*@Html.TextBoxFor(model => model.SenderAccountNum, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.SenderAccountNum, "", new { @class = "text-danger" })*@
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-12 ">
+                <div class="form-group">
+                    <label class="control-label col-md-6 mt-3">Receiver Account No:</label>
+                    <div class="">
+                        <input type="text" name="RecieverAmount" value="" class="form-control" />
+
+                        @*@Html.TextBoxFor(model => model.RecieverAccountNum, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.RecieverAccountNum, "", new { @class = "text-danger" })*@
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+
+        <div class="form-group mt-3">
+            <div class="col-lg-12 col-md-12">
+                <input type="submit" value="Transfer Funds" class="btn btn-primary form-control" />
+            </div>
+        </div>
+
+
+    }
+
+</div>

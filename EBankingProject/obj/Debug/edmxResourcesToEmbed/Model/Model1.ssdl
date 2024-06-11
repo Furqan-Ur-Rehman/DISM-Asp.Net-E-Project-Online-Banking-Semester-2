@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="E_bankingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Account">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AccountNO" Type="int" />
+    <Property Name="Balance" Type="decimal" Precision="8" Scale="3" />
+    <Property Name="AccountDate" Type="date" />
+    <Property Name="AccType" Type="int" />
+    <Property Name="CustomerId" Type="int" />
+  </EntityType>
+  <EntityType Name="AccountType">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AccountType" Type="varchar" MaxLength="225" />
+  </EntityType>
+  <EntityType Name="branch">
+    <Key>
+      <PropertyRef Name="branchId" />
+    </Key>
+    <Property Name="branchId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="branchName" Type="varchar" MaxLength="225" />
+  </EntityType>
+  <EntityType Name="ChequeReq">
+    <Key>
+      <PropertyRef Name="ChecqueId" />
+    </Key>
+    <Property Name="ChecqueId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="225" />
+    <Property Name="AccountNumber" Type="int" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="CustId" />
+    </Key>
+    <Property Name="CustId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="firstName" Type="varchar" MaxLength="225" />
+    <Property Name="lastName" Type="varchar" MaxLength="225" />
+    <Property Name="Gender" Type="varchar" MaxLength="225" />
+    <Property Name="DateofBirth" Type="date" />
+    <Property Name="CnicNo" Type="varchar" MaxLength="225" />
+    <Property Name="Address" Type="varchar" MaxLength="225" />
+    <Property Name="EmailId" Type="varchar" MaxLength="225" />
+    <Property Name="OpeningBalanace" Type="decimal" Precision="5" Scale="2" />
+    <Property Name="Pin" Type="int" />
+    <Property Name="Image" Type="varchar(max)" />
+    <Property Name="Branch" Type="int" />
+  </EntityType>
+  <EntityType Name="Transactions">
+    <Key>
+      <PropertyRef Name="TransId" />
+    </Key>
+    <Property Name="TransId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TransferAmount" Type="decimal" Precision="8" Scale="3" />
+    <Property Name="TransferDate" Type="date" />
+    <Property Name="SenderAccountNum" Type="int" />
+    <Property Name="RecieverAccountNum" Type="int" />
+  </EntityType>
+  <Association Name="FK__Account__AccType__2C3393D0">
+    <End Role="AccountType" Type="Self.AccountType" Multiplicity="0..1" />
+    <End Role="Account" Type="Self.Account" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AccountType">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Account">
+        <PropertyRef Name="AccType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Account__Custome__2D27B809">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="Account" Type="Self.Account" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CustId" />
+      </Principal>
+      <Dependent Role="Account">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChequeReq__Accou__300424B4">
+    <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+    <End Role="ChequeReq" Type="Self.ChequeReq" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ChequeReq">
+        <PropertyRef Name="AccountNumber" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Customer__Branch__286302EC">
+    <End Role="branch" Type="Self.branch" Multiplicity="0..1" />
+    <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="branch">
+        <PropertyRef Name="branchId" />
+      </Principal>
+      <Dependent Role="Customer">
+        <PropertyRef Name="Branch" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transacti__Recie__33D4B598">
+    <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+    <End Role="Transactions" Type="Self.Transactions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Transactions">
+        <PropertyRef Name="RecieverAccountNum" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transacti__Sende__32E0915F">
+    <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+    <End Role="Transactions" Type="Self.Transactions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Transactions">
+        <PropertyRef Name="SenderAccountNum" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="E_bankingModelStoreContainer">
+    <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AccountType" EntityType="Self.AccountType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="branch" EntityType="Self.branch" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ChequeReq" EntityType="Self.ChequeReq" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Transactions" EntityType="Self.Transactions" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Account__AccType__2C3393D0" Association="Self.FK__Account__AccType__2C3393D0">
+      <End Role="AccountType" EntitySet="AccountType" />
+      <End Role="Account" EntitySet="Account" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Account__Custome__2D27B809" Association="Self.FK__Account__Custome__2D27B809">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="Account" EntitySet="Account" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChequeReq__Accou__300424B4" Association="Self.FK__ChequeReq__Accou__300424B4">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="ChequeReq" EntitySet="ChequeReq" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Customer__Branch__286302EC" Association="Self.FK__Customer__Branch__286302EC">
+      <End Role="branch" EntitySet="branch" />
+      <End Role="Customer" EntitySet="Customer" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transacti__Recie__33D4B598" Association="Self.FK__Transacti__Recie__33D4B598">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="Transactions" EntitySet="Transactions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transacti__Sende__32E0915F" Association="Self.FK__Transacti__Sende__32E0915F">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="Transactions" EntitySet="Transactions" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

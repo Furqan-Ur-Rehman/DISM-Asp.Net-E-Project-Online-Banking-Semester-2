@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>E_Banking</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="loans HTML Template">
+    <meta name="keywords" content="loans, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Favicon -->
+    <link href="~/img/favicon.ico" rel="shortcut icon" />
+
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="~/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="~/css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="~/css/flaticon.css" />
+    <link rel="stylesheet" href="~/css/slicknav.min.css" />
+
+    <!-- Main Stylesheets -->
+    <link rel="stylesheet" href="~/css/style.css" />
+</head>
+<body>
+  
+    <div>
+        <header class="header-section">
+            <a href="index.html" class="site-logo">
+                <h3 style="color:white">E-BANKING</h3>
+            </a>
+            <nav class="header-nav">
+                <ul class="main-menu">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="about-us.html">About Us</a></li>
+
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="header-right">
+                    <a href="#" class="hr-btn"><i class="flaticon-029-telephone-1"></i>Call us now! </a>
+                    <div class="hr-btn hr-btn-2">+45 332 65767 42</div>
+                </div>
+            </nav>
+        </header>
+    </div>
+
+    <!-- Hero Section end -->
+    @*<section class="hero-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="hs-text">
+                            <h2>SECURE INTERNET BANKING</h2>
+                            <p>Donec eget efficitur ex. Donec eget dolor vitae eros feugiat tristique id vitae massa. Proin vulputate congue rutrum. Fusce lobortis a enim eget tempus. Class aptent taciti sociosqu ad litora torquent per conubia.</p>
+                            <a href="#" class="site-btn sb-dark">Find out more</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        @Html.Action("Login", "Account")
+                    </div>
+                    </div>
+            </div>
+            <div class="hero-slider owl-carousel">
+                <div class="hs-item set-bg" data-setbg="img/hero-slider/1.jpg"></div>
+                <div class="hs-item set-bg" data-setbg="img/hero-slider/2.jpg"></div>
+                <div class="hs-item set-bg" data-setbg="img/hero-slider/3.jpg"></div>
+            </div>
+        </section>*@
+    <!-- Hero Section end -->
+
+   
+
+        @RenderBody()
+    
+
+
+    <!--====== Javascripts & Jquery ======-->
+    <script src="~/js/jquery-3.2.1.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/jquery.slicknav.min.js"></script>
+    <script src="~/js/owl.carousel.min.js"></script>
+    <script src="~/js/jquery-ui.min.js"></script>
+    <script src="~/js/main.js"></script>
+</body>
+</html>

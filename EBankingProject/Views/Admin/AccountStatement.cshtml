@@ -1,0 +1,92 @@
+﻿@model IEnumerable<EBankingProject.Models.Account>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width" />
+        <link href="~/Content/Site.css" rel="stylesheet" />
+        <link href="~/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        .date {
+            margin-left: 800px;
+        }
+
+        .table {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="~/assets/img/favicon/favicon.ico" height="50" width="50" />
+                <h4>E-Banking</h4>
+            </div>
+
+            <div class="col-md-6  date">
+                <h5>Date:  @DateTime.Now.ToString()</h5>
+                <h5><b>Account Statement</b></h5>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 ">
+                @*<input type="hidden" name="id" value="@Model.AccountNO" />
+                <input type="hidden" name="Bal" value="@Model.Balance" />*@
+                @*<h5>@Session["AccountNo"]</h5>*@
+
+            </div>
+            <br />
+            <div class="col-md-6">
+                <br />
+                <br />
+                <h5 style="margin-left:200px">From: 8/17/2021 to: 8/17/2022</h5>
+                @*<h5>@Html.DisplayFor(modelItem => item.AccountType)</h5>*@
+            </div>
+        </div>
+        <br />
+        
+            <table class="table table-bordered table-striped table-hover">
+                <tr>
+                    <th colspan="2">@Html.DisplayNameFor(model => model.AccountDate)</th>
+                    <th colspan="2">@Html.DisplayNameFor(model => model.DocId)</th>
+                    <th colspan="5">@Html.DisplayNameFor(model => model.Description)</th>
+                    <th colspan="3">@Html.DisplayNameFor(model => model.Debit)</th>
+                    <th colspan="3">@Html.DisplayNameFor(model => model.Credit)</th>
+                    <th colspan="3">Total</th>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td colspan="2">@Html.DisplayFor(modelItem => item.AccountDate)</td>
+                        <td colspan="2">@Html.DisplayFor(modelItem => item.DocId)</td>
+                        <td colspan="5">@Html.DisplayFor(modelItem => item.Description)</td>
+                        <td colspan="3">@Html.DisplayFor(modelItem => item.Balance)</td>
+                        <td colspan="3">@Html.DisplayFor(modelItem => item.Balance)</td>
+                        <td colspan="3">@Html.DisplayFor(modelItem => item.Balance)</td>
+
+                    </tr>
+                }
+            </table>
+
+        </div>
+
+
+
+
+    <script src="~/js/jquery-3.2.1.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+
+

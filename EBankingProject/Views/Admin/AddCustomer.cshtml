@@ -1,0 +1,240 @@
+﻿@model EBankingProject.Models.Customer
+
+@{
+    ViewBag.Title = "AddCustomer";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@*<h2>AddCustomer</h2>*@
+<head>
+    <style>
+        #ImageContainer {
+            margin-left: 40%;
+        }
+
+        #ProdImage {
+            margin-left: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<div class="container-fluid my-5">
+
+    @using (Html.BeginForm("AddCustomer", "Admin", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+    {
+
+        <div class="row">
+
+            <h4>AddCustomer</h4>
+            <hr />
+            <div class="col-lg-12 col-md-12 col-sm-12" id="ImageContainer">
+
+                <div class="prod-img">
+
+                    <img src="~/Images/No-Image-Placeholder.svg.png" class="img-responsive" id="ProdImage" width="115" height="115" />
+
+                    <div class=" mt-3" id="upload-photos">
+                        <button class="btn btn-primary" onclick="document.getElementById('BrowseImage').click(); return false;">Upload Image</button>
+                    </div>
+
+                    <input type="file" class="visually-hidden" id="BrowseImage" name="uploadImg">
+
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-12 ">
+                @Html.AntiForgeryToken()
+
+                @*<div class="form-horizontal">*@
+                @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
+                <div class="form-group">
+                    @Html.LabelFor(model => model.firstName, htmlAttributes: new { @class = "control-label col-md-2 mt-3" })
+                    <div class="">
+                        @Html.EditorFor(model => model.firstName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.firstName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.lastName, htmlAttributes: new { @class = "control-label col-md-2 mt-3" })
+                    <div class="">
+                        @Html.EditorFor(model => model.lastName, new { htmlAttributes = new { @class = "form-control " } })
+                        @Html.ValidationMessageFor(model => model.lastName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12 ">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "control-label col-md-2  mt-3" })
+                    <div class="">
+                        @Html.EditorFor(model => model.Gender, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DateofBirth, htmlAttributes: new { @class = "control-label col-md-2  mt-3" })
+                    <div class="">
+                        @Html.EditorFor(model => model.DateofBirth, new { htmlAttributes = new { @class = "form-control", Type="date" } })
+                        @Html.ValidationMessageFor(model => model.DateofBirth, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12 ">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CnicNo, htmlAttributes: new { @class = "control-label col-md-4 mt-3" })
+                    <div class="">
+                        @Html.EditorFor(model => model.CnicNo, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CnicNo, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2  mt-3" })
+                    <div class="">
+                        @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.EmailId, htmlAttributes: new { @class = "control-label col-md-2  mt-3" })
+                    <div class="">
+                        @Html.EditorFor(model => model.EmailId, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.EmailId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.PinCode, htmlAttributes: new { @class = "control-label col-md-2  mt-3" })
+                    <div class="">
+                        @Html.EditorFor(model => model.PinCode, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.PinCode, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12 ">
+                    <div class="form-group">
+                        <label class="control-label col-md-4 mt-3">Select Branch</label>
+                        <div class="">
+                            @Html.DropDownListFor(model => model.Branch, ViewBag.BList as SelectList, "--- Select Branch ---", htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Branch, "", new { @class = "text-danger" })
+                        </div>
+
+                    </div>
+
+                </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 ">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2  mt-3" })
+                    <div class="">
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        @*<div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12 ">
+                    <div class="form-group">
+                        <label class="control-label col-md-4 mt-3">Select Account Type</label>
+                        <div class="">
+                            @Html.DropDownListFor(model => model.AccountType1, ViewBag.TypeList as SelectList, "--- Select Account Type ---", htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.AccountType1, "", new { @class = "text-danger" })
+                        </div>
+
+                    </div>
+
+                </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-12 ">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DateofOpeningAccount, htmlAttributes: new { @class = "control-label col-md-2  mt-3" })
+                    <div class="">
+                        @Html.EditorFor(model => model.DateofOpeningAccount, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.DateofOpeningAccount, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 ">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.InitialAmount, htmlAttributes: new { @class = "control-label col-md-2  mt-3" })
+                    <div class="">
+                        @Html.EditorFor(model => model.InitialAmount, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.InitialAmount, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+        </div>*@
+
+
+
+
+
+        @*</div>*@
+
+
+
+
+        <div class="form-group mt-3">
+            <div class="col-lg-12 col-md-12">
+                <input type="submit" value="Create" class="btn btn-primary form-control" />
+            </div>
+        </div>
+
+
+    }
+
+</div>
+
+@*<script src="~/Scripts/jquery-3.6.0.min.js"></script>*@
+<script src="~/js/jquery-3.2.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+
+
+        //$("#upload-photos").click(function () {
+        //    $("#BrowseImage").trigger('click')
+        //})
+
+        $("#ProdImage").click(function () {
+            $("#BrowseImage").trigger('click')
+        })
+
+
+        $("#BrowseImage").change(function () {
+            if (this.files && this.files[0]) {
+                var fileReader = new FileReader();
+                fileReader.readAsDataURL(this.files[0]);
+                fileReader.onload = function (x) {
+
+                    $("#ProdImage").attr('src', x.target.result);
+                }
+            }
+        })
+    })
+</script>
+

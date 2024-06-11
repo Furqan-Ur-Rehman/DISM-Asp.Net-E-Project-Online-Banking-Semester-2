@@ -1,0 +1,68 @@
+﻿@model IEnumerable<EBankingProject.Models.Account>
+
+@{
+    ViewBag.Title = "ListAccount";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>ListAccount</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@if (TempData["DeleteMessage"] != null)
+{
+    <h6 class="alert-primary p-2">@TempData["DeleteMessage"]</h6>
+}
+@if (TempData["EditMessage"] != null)
+{
+    <h6 class="alert-primary p-2">@TempData["EditMessage"]</h6>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AccountNO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Balance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AccountDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AccountType1.TypeOfAccount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Customer.EmailId)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AccountNO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Balance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AccountDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AccountType1.TypeOfAccount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.EmailId)
+            </td>
+            <td>
+                @Html.ActionLink("Statement", "AccountStatement1", new { id = item.AccountNO }) |
+                @Html.ActionLink("Edit", "EditAccount", new { id = item.AccountNO }) |
+
+                @Html.ActionLink("Delete", "DeleteAccount", new { id = item.AccountNO })
+            </td>
+        </tr>
+    }
+
+</table>

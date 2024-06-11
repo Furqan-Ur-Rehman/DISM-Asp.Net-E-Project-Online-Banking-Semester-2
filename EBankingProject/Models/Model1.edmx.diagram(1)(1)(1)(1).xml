@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d088d5a8e6454d2b835ba1e984192649" Name="Diagram1">
+        <EntityTypeShape EntityType="EbankingModel.Account" Width="1.5" PointX="5.25" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="EbankingModel.AccountType" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EbankingModel.branch" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EbankingModel.ChequeReq" Width="1.5" PointX="7.5" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EbankingModel.Customer" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EbankingModel.Transaction" Width="1.5" PointX="7.5" PointY="3.625" IsExpanded="true" />
+        <AssociationConnector Association="EbankingModel.FK__Account__Account__1A14E395" ManuallyRouted="false" />
+        <AssociationConnector Association="EbankingModel.FK__Account__Custome__1B0907CE" ManuallyRouted="false" />
+        <AssociationConnector Association="EbankingModel.FK__ChequeReq__Accou__1BFD2C07" ManuallyRouted="false" />
+        <AssociationConnector Association="EbankingModel.FK__Transacti__Recie__1DE57479" ManuallyRouted="false" />
+        <AssociationConnector Association="EbankingModel.FK__Transacti__Sende__1ED998B2" ManuallyRouted="false" />
+        <AssociationConnector Association="EbankingModel.FK__Customer__Branch__1CF15040" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="EbankingModel.BalanceEnquiry" Width="1.5" PointX="7.5" PointY="12.5" />
+        <EntityTypeShape EntityType="EbankingModel.ChangeofAddress" Width="1.5" PointX="7.5" PointY="15" />
+        <EntityTypeShape EntityType="EbankingModel.RequestofChequeBook" Width="1.5" PointX="7.5" PointY="7.375" />
+        <EntityTypeShape EntityType="EbankingModel.StopPaymentofCheque" Width="1.5" PointX="7.5" PointY="9.875" />
+        <AssociationConnector Association="EbankingModel.FK__BalanceEn__Accou__239E4DCF" />
+        <AssociationConnector Association="EbankingModel.FK__ChangeofA__Accou__267ABA7A" />
+        <AssociationConnector Association="EbankingModel.FK__Requestof__Accou__29572725" />
+        <AssociationConnector Association="EbankingModel.FK__StopPayme__Accou__2C3393D0" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

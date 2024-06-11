@@ -1,0 +1,101 @@
+﻿@model EBankingProject.Models.Account
+@{
+    ViewBag.Title = "AccountStatement1";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>AccountStatement1</h2>
+
+<div class="container">
+    @using (Html.BeginForm("AccountStatement1", "Admin", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+    {
+        <h4 class="mt-4"><u>Add Calculation</u></h4>
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.AccountNO, htmlAttributes: new { @class = "control-label col-md-2 mt-3", @name = "id" })
+                    <div class="">
+                        @Html.EditorFor(model => model.AccountNO, new { htmlAttributes = new { @class = "form-control " } })
+                        @Html.ValidationMessageFor(model => model.AccountNO, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.AccountDate, htmlAttributes: new { @class = "control-label col-md-2 mt-3", @name = "id" })
+                    <div class="">
+                        @Html.EditorFor(model => model.AccountDate, new { htmlAttributes = new { @class = "form-control " } })
+                        @Html.ValidationMessageFor(model => model.AccountDate, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DocId, htmlAttributes: new { @class = "control-label col-md-2 mt-3", @name = "id" })
+                    <div class="">
+                        @Html.EditorFor(model => model.DocId, new { htmlAttributes = new { @class = "form-control " } })
+                        @Html.ValidationMessageFor(model => model.DocId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2 mt-3", @name = "id" })
+                    <div class="">
+                        @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control " } })
+                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Balance, htmlAttributes: new { @class = "control-label col-md-2 mt-3", @name = "id" })
+                    <div class="">
+                        @Html.EditorFor(model => model.Balance, new { htmlAttributes = new { @class = "form-control " } })
+                        @Html.ValidationMessageFor(model => model.Balance, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Debit, htmlAttributes: new { @class = "control-label col-md-2 mt-3", @name = "id" })
+                    <div class="">
+                        @Html.EditorFor(model => model.Debit, new { htmlAttributes = new { @class = "form-control " } })
+                        @Html.ValidationMessageFor(model => model.Debit, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Credit, htmlAttributes: new { @class = "control-label col-md-2 mt-3", @name = "id" })
+                    <div class="">
+                        @Html.EditorFor(model => model.Credit, new { htmlAttributes = new { @class = "form-control " } })
+                        @Html.ValidationMessageFor(model => model.Credit, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Total, htmlAttributes: new { @class = "control-label col-md-2 mt-3", @name = "id" })
+                    <div class="">
+                        @Html.EditorFor(model => model.Total, new { htmlAttributes = new { @class = "form-control " } })
+                        @Html.ValidationMessageFor(model => model.Total, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group mt-3">
+            <div class="col-lg-12 col-md-12">
+                <input type="submit" value="Create" class="btn btn-primary form-control" />
+            </div>
+        </div>
+    }
+
+</div>

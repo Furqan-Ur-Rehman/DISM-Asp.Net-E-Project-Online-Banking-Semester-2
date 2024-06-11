@@ -1,0 +1,50 @@
+﻿@model IEnumerable<EBankingProject.Models.ChangeofAddress>
+@{
+    ViewBag.Title = "ChangeofAddress";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h4 class="mt-3"> Request for ChangeofAddress</h4>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ChangeId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AccountNo)     
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.OldAddress)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.NewAddress)
+        </th>
+        
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChangeId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AccountNo)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.OldAddress)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.NewAddress)
+            </td>
+
+           
+        </tr>
+    }
+
+</table>
